@@ -12,7 +12,7 @@
     @yield('root.css')
 </head>
 
-<body>
+<body class="flex flex-col max-h-screen h-screen">
     @yield('root.content')
 </body>
 

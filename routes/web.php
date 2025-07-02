@@ -10,7 +10,3 @@ Route::get('/', function () {
 Route::post('/', [UrlController::class, 'store'])->name('shorten');
 
 Route::get('/{short_url}', [UrlController::class, 'redirect'])->name('url.redirect');
-
-Route::get('about', function () {
-    return view('about');
-})->name('about');

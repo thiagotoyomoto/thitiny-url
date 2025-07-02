@@ -7,7 +7,7 @@ use App\Services\ShortCodeGenerator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-class UrlController extends Controller
+class UrlController
 {
     public function __construct(
         private ShortCodeGenerator $shortCodeGenerator
@@ -48,6 +48,8 @@ class UrlController extends Controller
             'long_url' => $longUrl,
         ]);
 
-        return redirect()->route('home')->with('success', "{$shortCode}");
+        $shortUrl = "{$request->root()}/{$shortCode}";
+
+        return redirect()->route('home')->with('short_url', $shortUrl);
     }
 }
