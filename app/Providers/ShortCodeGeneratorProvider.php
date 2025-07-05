@@ -5,23 +5,24 @@ namespace App\Providers;
 use App\Services\ShortCodeGenerator;
 use App\Services\ShortCodeGenerator\Adapters\NanoIdAdapter;
 use Hidehalo\Nanoid\Client;
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 
-class AppServiceProvider extends ServiceProvider
+class ShortCodeGeneratorProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Register services.
      */
     public function register(): void
     {
-        $this->app->singleton(ShortCodeGenerator::class, function (Application $app) {
-            return new NanoIdAdapter();
+        $this->app->singleton(ShortCodeGenerator::class, function ($app) {
+            return new NanoIdAdapter(
+                new Client()
+            );
         });
     }
 
     /**
-     * Bootstrap any application services.
+     * Bootstrap services.
      */
     public function boot(): void
     {

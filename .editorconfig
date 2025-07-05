@@ -8,6 +8,10 @@ indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
 
+[*.{html,blade.php}]
+indent_size = 4
+tab_width = 4
+
 [*.md]
 trim_trailing_whitespace = false
 
