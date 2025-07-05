@@ -33,14 +33,14 @@
 
             <form action="{{ route('shorten') }}" method="POST" class="p-8 flex flex-col sm:flex-row gap-4 items-center">
                 @csrf
-                <input type="text" name="long_url" id="url" class="p-2 flex-1 border rounded"
+                <input type="text" id="long_url" name="long_url" id="url" class="p-2 flex-1 border rounded"
                     placeholder="Cole a sua URL longa aqui" value="{{ old('long_url') }}" required />
-                <button type="submit"
+                <button id="submit-long-url" type="submit"
                     class="flex cursor-pointer text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Encurtar</button>
             </form>
 
             @if ($errors->any())
-                <div class="w-full p-8">
+                <div id="error" class="w-full p-8">
                     <div class="p-4 border rounded-md bg-red-100 text-red-800">
                         {{ $errors->first() }}
                     </div>
