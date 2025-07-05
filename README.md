@@ -41,33 +41,64 @@ cd thitiny-url
 
 ```shell
 composer install
-```
-
-```shell
 npm install
 ```
 
-3. Crie um arquivo `.env` a partir do arquivo `.env.example`:
+3. Crie um arquivo `.env`, a partir do arquivo `.env.example`, e modifique as configurações conforme necessário:
 
 ```shell
 cp .env.example .env
 ```
 
-4. Execute o Docker Compose para criar o banco de dados:
+4. Gere uma chave de aplicação:
+
+```shell
+php artisan key:generate
+```
+
+5. Execute o Docker Compose para criar o banco de dados:
 
 ```shell
 docker compose up -d
 ```
 
+6. Execute as migrações para criar as tabelas no banco de dados:
 
-5. Execute o projeto:
+```shell
+php artisan migrate
+```
+
+7. Execute o projeto:
 
 ```shell
 composer dev
 ```
 
-6. Acesse a URL:
+8. Acesse a aplicação através da URL `http://localhost:8000`.
 
+
+## Executando os testes
+
+Nesta aplicação foram implementados testes unitários e testes E2E para garantir o funcionamento correto das funcionalidades. Para executar os testes.
+
+### Testes unitários
+
+Para executar os testes unitários, utilize o seguinte comando:
+
+```shell
+php artisan test
 ```
-http://localhost:8000
+
+### Testes E2E
+
+Para executar os testes E2E, além de necessitar da aplicação rodando e o Laravel Dusk instalado, é necessário ter o ChromeDriver instalado e configurado. Para instalar o Laravel Dusk, execute:
+
+```shell
+php artisan dusk:chrome-driver
+```
+
+E para executar os testes E2E, utilize o seguinte comando:
+
+```shell
+php artisan dusk
 ```
